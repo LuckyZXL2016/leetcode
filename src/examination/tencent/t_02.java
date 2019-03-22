@@ -41,11 +41,11 @@ public class t_02 {
         }
 
         boolean flag = false;
-        //当前点折算到原数组的位置是：row * cols + col
+        //当前点折算到原数组的位置是：row * rows + col
         if (row >= 0 && row < rows && col >= 0 && col < cols
-                && !visited[row * cols + col] && matrix[row * cols + col] == str[index[0]]) {
+                && !visited[row * rows + col] && matrix[row * rows + col] == str[index[0]]) {
             index[0]++;    //指针右移
-            visited[row * cols + col] = true;
+            visited[row * rows + col] = true;
 
             //第一个点是合法的起点之后开始回溯:八个方向进行搜索
             flag =  isPath(matrix, rows, cols, row - 1, col, str, visited, index) ||
@@ -58,7 +58,7 @@ public class t_02 {
                     isPath(matrix, rows, cols, row, col + 1, str, visited, index);
             if (!flag) {        //恢复现场
                 index[0]--;
-                visited[row * cols + col] = false;
+                visited[row * rows + col] = false;
             }
         }
 
@@ -66,10 +66,10 @@ public class t_02 {
     }
 
     public static void main(String[] args) {
-        String str = "ABCDEFGHI";
+        String str = "ABCDEFGHIJKL";
         char[] matrix = str.toCharArray();
         String str2 = "BFH";
         char[] c = str2.toCharArray();
-        System.out.println(new t_02().hasPath(matrix, 3, 3, c));
+        System.out.println(new t_02().hasPath(matrix, 3, 4, c));
     }
 }
