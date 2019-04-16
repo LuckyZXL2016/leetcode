@@ -41,6 +41,8 @@ public class dp11 {
         return memo[n];
     }
 
+    // "leetcode"
+    // ["leet","code"]
     public static void main(String[] args) {
         System.out.println(wordBreak("leetcode", Arrays.asList("leet","code")));
     }
