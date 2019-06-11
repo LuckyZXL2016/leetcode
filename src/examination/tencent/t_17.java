@@ -18,11 +18,15 @@ public class t_17 {
                 int sum = nums[i] + nums[start] + nums[end];
                 if (Math.abs(target - ans) > Math.abs(target - sum)) {
                     ans = sum;
-                } else if (ans < sum) {
-                    end--;
-                } else {
-                    start++;
                 }
+                if (sum > target) {
+                    end--;
+                } else if (sum < target) {
+                    start++;
+                } else {
+                    return ans;
+                }
+
             }
         }
         return ans;
@@ -30,6 +34,8 @@ public class t_17 {
 
     public static void main(String[] args) {
         int[] nums = {-1, 2, 1, -4};
+        int[] nums1 = {1, -3, 3, 5, 4, 1};
         System.out.println(threeSumClosest(nums, 1));
+        System.out.println(threeSumClosest(nums1, 1));
     }
 }
