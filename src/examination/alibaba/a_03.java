@@ -19,6 +19,7 @@ public class a_03 {
         }
         return sum;
     }
+
     // 优雅写法
     public static int getZeroSum2(int n) {
         int sum = 0;
@@ -39,6 +40,7 @@ public class a_03 {
         }
         return sum;
     }
+
     // 优化代码
     public static int getOnePlace2(int n) {
         int sum = 0;
@@ -60,6 +62,7 @@ public class a_03 {
         }
         return s;
     }
+
     // 大整数相乘
     public static String mul(String s1, String s2) {
         // 先把字符串转化为 字符数组
@@ -75,10 +78,10 @@ public class a_03 {
             for (int j = c2.length - 1; j >= 0; j--) {
                 int temp = (c1[i] - '0') * (c2[j] - '0') + c[index] + res;
                 res = temp / 10;
-                c[index--] = (char)(temp % 10);
+                c[index--] = (char) (temp % 10);
             }
             // 每趟乘下来的进位要进行保存
-            c[index] = (char)res;
+            c[index] = (char) res;
             len--;
         }
         // 最后把c中的字符加上'0'
@@ -101,5 +104,6 @@ public class a_03 {
         System.out.println(getOnePlace(8));
         System.out.println(getOnePlace2(8));
         System.out.println(getNF(5));
+        System.out.println(mul("2", "3"));
     }
 }
