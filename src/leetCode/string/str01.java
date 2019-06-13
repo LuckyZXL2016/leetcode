@@ -19,8 +19,11 @@ public class str01 {
 
         char[] c1 = num1.toCharArray();
         char[] c2 = num2.toCharArray();
-        int len = num1.length() + num2.length();
+        int len = c1.length + c2.length;
 
+        if (c1[0] == '0' || c2[0] == '0') {
+            return "0";
+        }
         char[] c = new char[len];
 
         for (int i = num1.length() - 1; i >=0; i--) {
@@ -47,5 +50,6 @@ public class str01 {
 
     public static void main(String[] args) {
         System.out.println(multiply("2", "3"));
+        System.out.println(multiply("9133", "0"));
     }
 }
