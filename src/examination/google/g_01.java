@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
- * beautifulNumber
+ * beautifulNumber,小数据集
  * 判断一个数在几进制下是beautiful的
  * Created by ZXL on 2019/6/24.
  */
@@ -16,7 +16,7 @@ public class g_01 {
         int cases = in.nextInt();
         for (int i = 0; i < cases; i++) {
             int n = in.nextInt();
-            System.out.println("Case #" + i + ":" + beautiful(n));
+            System.out.println("Case #" + (i + 1) + ":" + beautiful(n));
         }
     }
 
@@ -27,7 +27,7 @@ public class g_01 {
                 return radix;
             }
         }
-        return n-1;
+        return n - 1;
     }
 
     private static boolean isBeautiful(int n, int radix) {
