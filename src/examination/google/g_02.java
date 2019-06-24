@@ -27,7 +27,7 @@ public class g_02 {
                 return radix;
             }
         }
-        return n - 1;
+        throw new IllegalStateException("Should not reach here");
     }
 
     // Get radix so that n is 111...1(bits 1 in total) in that radix
