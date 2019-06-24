@@ -27,7 +27,7 @@ public class g_01 {
                 return radix;
             }
         }
-        return n - 1;
+        throw new IllegalStateException("Should not reach here");
     }
 
     private static boolean isBeautiful(int n, int radix) {
