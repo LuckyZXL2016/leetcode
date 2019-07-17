@@ -28,7 +28,11 @@ public class ll08 {
     public static ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null) return head;
 
+        ListNode p = reverseList2(head.next);
+        head.next.next = head;
+        head.next = null;
 
+        return p;
     }
 
     public static void main(String[] args) {
