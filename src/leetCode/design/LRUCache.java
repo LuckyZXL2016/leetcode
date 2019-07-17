@@ -28,6 +28,9 @@ public class LRUCache extends LinkedHashMap<Integer, Integer> {
     private int capacity;
 
     public LRUCache(int capacity) {
+        // 当accessOrder为true时，我们每次调用get方法时都会调用该方法，
+        // 将我们访问的Node移动到最后，使之成为尾部节点，从而改变了数据在
+        // LinkedHashMap中的存储顺序。
         super(capacity, 0.75f, true);
         this.capacity = capacity;
     }
