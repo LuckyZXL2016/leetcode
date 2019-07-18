@@ -1,7 +1,9 @@
 package leetCode.array;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 给定一个整数数组，判断是否存在重复元素。
@@ -14,7 +16,9 @@ import java.util.Map;
  *  输出: true
  */
 public class array13 {
-    public boolean containsDuplicate(int[] nums) {
+
+    // 第一种方法
+    public boolean containsDuplicate1(int[] nums) {
         if (nums == null || nums.length == 1) return false;
 
         Map<Integer, Integer> map = new HashMap<>();
@@ -25,6 +29,18 @@ public class array13 {
             } else {
                 return true;
             }
+        }
+        return false;
+    }
+
+    // 第二种方法
+    public boolean containsDuplicate(int[] nums) {
+        if (nums == null || nums.length == 1) return false;
+
+        Set<Integer> set = new HashSet<>(nums.length);
+        for (int num: nums) {
+            if (set.contains(num)) return true;
+            set.add(num);
         }
         return false;
     }
