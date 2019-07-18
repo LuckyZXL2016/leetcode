@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class array12 {
 
-    
+
     public int findKthLargest(int[] nums, int k) {
         int len = nums.length;
         Arrays.sort(nums);
