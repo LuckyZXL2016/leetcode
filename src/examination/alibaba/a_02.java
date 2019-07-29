@@ -129,8 +129,6 @@ public class a_02 {
         }
     }
 
-    // 深度优先，同先序非递归
-
 
     public static void main(String[] args) {
         a_02 example = new a_02();
