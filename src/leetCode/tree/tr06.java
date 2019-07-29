@@ -8,7 +8,7 @@ public class tr06 {
     // 先序
     private void pre_traverse(TreeNode root) {
         while (root != null) {
-            System.out.println(root.val + " ");
+            System.out.print(root.val + " ");
             pre_traverse(root.left);
             pre_traverse(root.right);
         }
@@ -18,7 +18,7 @@ public class tr06 {
     private void in_traverse(TreeNode root) {
         while (root != null) {
             in_traverse(root.left);
-            System.out.println(root.val + " ");
+            System.out.print(root.val + " ");
             in_traverse(root.right);
         }
     }
@@ -28,7 +28,7 @@ public class tr06 {
         while (root != null) {
             beh_traverse(root.left);
             beh_traverse(root.right);
-            System.out.println(root.val + " ");
+            System.out.print(root.val + " ");
         }
     }
 }
