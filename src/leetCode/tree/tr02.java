@@ -36,7 +36,7 @@ public class tr02 {
     }
 
     public static void main(String[] args) {
-        TreeNode t1 = new TreeNode(1);
+        TreeNode t1 = new TreeNode(-10);
         TreeNode t2 = new TreeNode(9);
         TreeNode t3 = new TreeNode(20);
         TreeNode t4 = new TreeNode(15);
