@@ -44,6 +44,11 @@ public class a_05_mergeList {
                 l2 = l2.next;
             }
         }
+        if (l1 == null) {
+            current.next = l2;
+        } else {
+            current.next = l1;
+        }
         return mergeHead;
     }
 }
