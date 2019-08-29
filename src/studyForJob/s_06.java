@@ -1,15 +1,11 @@
 package studyForJob;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * 二叉树的最大路径和
  * Created by ZXL on 2019/8/29.
  */
 public class s_06 {
     private static int maxValue = Integer.MIN_VALUE;
-    static List<TreeNode> ls = new LinkedList<>();
 
     private static int getMaxValue(TreeNode root) {
         if (root == null) return 0;
@@ -17,8 +13,8 @@ public class s_06 {
         int leftValue = Math.max(getMaxValue(root.left), 0);
         int rightValue = Math.max(getMaxValue(root.right), 0);
         int priceValue = leftValue + rightValue + root.val;
-
         maxValue = Math.max(maxValue, priceValue);
+
         return priceValue;
     }
 
@@ -36,9 +32,5 @@ public class s_06 {
 
         getMaxValue(t1);
         System.out.println(maxValue);
-
-        for (TreeNode node:ls) {
-            System.out.print(node.val + " ");
-        }
     }
 }
