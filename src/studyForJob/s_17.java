@@ -59,6 +59,30 @@ public class s_17 {
         return str.substring(start, start + max);
     }
 
+    // 最长回文子串--2
+    private static String longestPalindrome2_2(String str) {
+        if (str == null || str.length() == 0) return null;
+
+        int len = str.length();
+        int[][] dp = new int[len][len];
+        int max = 1, start = 0;
+        for (int i = len - 1; i >= 0; i--) {
+            dp[i][i] = 1;
+            for (int j = i + 1; j < len; j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    dp[i][j] = dp[i + 1][j - 1] + 2;
+                    if (max < dp[i][j]) {
+                        max = dp[i][j];
+                        start = i;
+                    }
+                } else {
+                    dp[i][j] = 0;
+                }
+            }
+        }
+        return str.substring(start, start + max);
+    }
+
     // 验证回文子串
     // 输入: "A man, a plan, a canal: Panama"  输出: true
     // 只考虑字母和数字字符，可以忽略字母的大小写
@@ -86,7 +110,7 @@ public class s_17 {
     private static int longestPalindrome4(String str) {
         int len = str.length();
         int[][] dp = new int[len][len];
-        for (int i = 0; i < len; i++) {
+        for (int i = len - 1; i >= 0; i--) {
             dp[i][i] = 1;
             for (int j = i + 1; j < len; j++) {
                 if (str.charAt(i) == str.charAt(j))
@@ -99,9 +123,10 @@ public class s_17 {
     }
 
     public static void main(String[] args) {
-        String str = "aba";
+        String str = "ababa";
         System.out.println(longestPalindrome(str));
         System.out.println(longestPalindrome2(str));
+        System.out.println(longestPalindrome2_2(str));
         System.out.println(longestPalindrome3(str));
         System.out.println(longestPalindrome4(str));
     }
