@@ -11,7 +11,9 @@ public class m_02_editdistance {
         String str2 = "abcd";
 
         int res = editDistance(str1, str2);
+        int res2 = getLcsLength(str1, str2);
         System.out.println(res);
+        System.out.println(res2);
     }
 
     private static int editDistance(String str1, String str2) {
@@ -34,12 +36,33 @@ public class m_02_editdistance {
                 }
             }
         }
-        for (int i = 0; i < arr1.length + 1; i++) {
-            for (int j = 0; j < arr2.length + 1; j++) {
-                System.out.print(dp[i][j] + " ");
-            }
-            System.out.println();
-        }
+//        for (int i = 0; i < arr1.length + 1; i++) {
+//            for (int j = 0; j < arr2.length + 1; j++) {
+//                System.out.print(dp[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
         return dp[arr1.length][arr2.length];
+    }
+
+    private static int getLcsLength(String str1, String str2) {
+        if (str1 == null || str2 == null) return 0;
+
+        int len1 = str1.length();
+        int len2 = str2.length();
+
+        int len = len1 > len2 ? len1 : len2;
+        int[][] dp = new int[len1 + 1][len2 + 1];
+        for (int i = 1; i <= len1; i++) {
+            for (int j = 1; j <= len2; j++) {
+                if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+
+        return len - dp[len1][len2];
     }
 }
