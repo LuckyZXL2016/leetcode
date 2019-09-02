@@ -19,7 +19,7 @@ import java.util.List;
  * ]
  */
 public class dp06 {
-    public class TreeNode {
+    private class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -29,13 +29,13 @@ public class dp06 {
         }
     }
 
-    public List<TreeNode> generateTrees(int n) {
+    private List<TreeNode> generateTrees(int n) {
         if (n == 0)
             return new LinkedList<TreeNode>();
         return generateTrees(1, n);
     }
 
-    public List<TreeNode> generateTrees(int start, int end) {
+    private List<TreeNode> generateTrees(int start, int end) {
         List<TreeNode> res = new LinkedList<TreeNode>();
         if (start > end) {
             res.add(null);
@@ -57,8 +57,8 @@ public class dp06 {
     }
 
     public static void main(String[] args) {
-//        dp06 example = new dp06();
-//        List<TreeNode> res = example.generateTrees(4);
-//        System.out.println(res.size());
+        dp06 example = new dp06();
+        List<TreeNode> res = example.generateTrees(4);
+        System.out.println(res.size());
     }
 }
