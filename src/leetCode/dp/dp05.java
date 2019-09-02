@@ -8,13 +8,13 @@ package leetCode.dp;
  * 'Z' -> 26
  * 给定一个只包含数字的非空字符串，请计算解码方法的总数。
  * Created by ZXL on 2019/3/7.
- *
+ * <p>
  * 输入: "12"
  * 输出: 2
-*  解释: 它可以解码为 "AB"（1 2）或者 "L"（12）。
+ * 解释: 它可以解码为 "AB"（1 2）或者 "L"（12）。
  */
 public class dp05 {
-    public static int numDecodings(String s) {
+    private static int numDecodings(String s) {
         if (s == null || s.length() == 0) {
             return 0;
         }
@@ -45,7 +45,36 @@ public class dp05 {
         return memo[0];
     }
 
+    private static int numDecodings2(String s) {
+        if (s == null || s.length() == 0) return 0;
+        int len = s.length();
+        // dp[i]为第 i位后编码之和
+        int[] dp = new int[len];
+
+        char[] chars = s.toCharArray();
+        if (chars[len - 1] == '0') {
+            dp[len - 1] = 0;
+        } else {
+            dp[len - 1] = 1;
+        }
+
+        for (int i = len - 2; i >= 0; i--) {
+            if (chars[i] == '1' || chars[i] == '2' && chars[i + 1] <= '6') {
+                if (i == len - 2) {
+                    dp[i] = dp[i + 1] + 1;
+                } else {
+                    dp[i] = dp[i + 1] + dp[i + 2];
+                }
+            } else {
+                dp[i] = dp[i + 1];
+            }
+        }
+
+        return dp[0];
+    }
+
     public static void main(String[] args) {
         System.out.println(numDecodings("12"));
+        System.out.println(numDecodings2("12"));
     }
 }
