@@ -43,7 +43,7 @@ public class dp01 {
         while (k < s.length() - 1) {
             i = k - 1;
             j = k + 1;
-            while ( i >= 0 && j < s.length() && compareNumber(i, j, s)) {
+            while (i >= 0 && j < s.length() && compareNumber(i, j, s)) {
                 i--;
                 j++;
             }
@@ -61,9 +61,35 @@ public class dp01 {
         }
     }
 
+    private static String getLongestPalindrome(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+        int len = str.length();
+        int[][] dp = new int[len][len];
+        int max = 1;
+        int start = 0;
+        for (int i = len - 1; i >= 0; i--) {
+            dp[i][i] = 1;
+            for (int j = i + 1; j <= len - 1; j++) {
+                if (str.charAt(i) == str.charAt(j)) {
+                    dp[i][j] = dp[i + 1][j - 1] + 2;
+                    if (dp[i][j] > max) {
+                        max = dp[i][j];
+                        start = i;
+                    } else {
+                        dp[i][j] = 0;
+                    }
+                }
+            }
+        }
+        return str.substring(start, start + max);
+    }
+
     public static void main(String args[]) {
-        String s = "";
+        String s = "babad";
         System.out.println(longestPalindrome(s));
+        System.out.println(getLongestPalindrome(s));
     }
 }
 
