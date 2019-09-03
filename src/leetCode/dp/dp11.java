@@ -25,7 +25,7 @@ import java.util.List;
  * 输出: false
  */
 public class dp11 {
-    public static boolean wordBreak(String s, List<String> wordDict) {
+    private static boolean wordBreak(String s, List<String> wordDict) {
         int n = s.length();
         // memo[i]表示以i-1结尾的字符串可以被拆分
         boolean[] memo = new boolean[n + 1];
@@ -38,6 +38,10 @@ public class dp11 {
                 }
             }
         }
+//        for (int i = 0; i <= n; i++) {
+//            System.out.print(memo[i] + " ");
+//        }
+//        System.out.println();
         return memo[n];
     }
 
