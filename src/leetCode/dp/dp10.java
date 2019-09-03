@@ -41,6 +41,27 @@ public class dp10 {
         return max;
     }
 
+    // 购买两次股票
+    private static int maxProfitTwice(int[] prices) {
+        int len = prices.length;
+
+        // [i][j] ,i j为当前到达第 i天时最多进行 j次交易
+        // local[i][j] 表示 最好一次交易在第 i天卖出的利润
+        // global[i][j] 表示 第 i天时最多进行 j次交易的最大利润
+        int[][] local = new int[len + 1][3];
+        int[][] global = new int[len + 1][3];
+
+        for (int i = 1; i < prices.length; i++) {
+            int diff = prices[i] - prices[i - 1];
+            for (int j = 1; j <= 2; j++) {
+                // local中 local[i-1][j] + diff 也是只进行 j次交易
+                local[i][j] = Math.max(global[i - 1][j - 1], local[i - 1][j]) + diff;
+                global[i][j] = Math.max(local[i][j], global[i - 1][j]);
+            }
+        }
+        return global[len - 1][2];
+    }
+
     public static void main(String[] args) {
         int[] prices = {7, 1, 5, 3, 6, 4, 10};
         System.out.println(maxProfit(prices));
