@@ -28,7 +28,7 @@ public class dp16 {
 
     private static int bfs(int[][] grid, int[] begin, int[] end) {
         int[] dx = {1,0,-1,0};
-        int[] dy = {0,1,0,-1};
+        int[] dy = {0,-1,0,1};
         int n = grid.length;
         int m = grid[0].length;
         int[][] dp = new int[n][m];
