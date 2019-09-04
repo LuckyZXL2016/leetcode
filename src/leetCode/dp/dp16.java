@@ -49,7 +49,7 @@ public class dp16 {
                 int nx = cur[0] + dx[i];
                 int ny = cur[1] + dy[i];
                 if (nx >= 0 && nx < n && ny >= 0 && ny < m &&
-                    grid[nx][ny] != 1 && grid[nx][ny] == Integer.MAX_VALUE) {
+                    grid[nx][ny] != 1 && dp[nx][ny] == Integer.MAX_VALUE) {
                     dp[nx][ny] = dp[cur[0]][cur[1]] + 1;
                     int[] c = {nx, ny};
                     queue.offer(c);
