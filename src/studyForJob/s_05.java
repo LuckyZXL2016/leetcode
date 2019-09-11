@@ -27,7 +27,7 @@ public class s_05 {
                 if (stack.isEmpty()) {
                     return false;
                 } else {
-                    if (stack.peek() == c) {
+                    if (stack.peek() == map.get(c)) {
                         stack.pop();
                     } else {
                         return false;
