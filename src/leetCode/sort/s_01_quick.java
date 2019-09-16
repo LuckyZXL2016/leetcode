@@ -1,5 +1,7 @@
 package leetCode.sort;
 
+import java.util.Random;
+
 /**
  * 快速排序
  * Created by ZXL on 2019/8/5.
@@ -29,10 +31,42 @@ public class s_01_quick {
         return low; // 返回tmp的正确位置
     }
 
+    // 找寻基准数据的正确索引
+    private static int getIndex2(int[] arr, int low, int high) {
+        // 基准数据
+        Random in = new Random();
+        int index = in.nextInt(high - low + 1) + low;
+        int tmp = arr[index];
+        while (low < high) {
+            // 当队尾的元素大于等于基准数据时,向前挪动high指针
+            while (index < high && arr[high] >= tmp) {
+                high--;
+            }
+            // 如果队尾元素小于tmp了,需要将其赋值给index
+            if (index < high) {
+                arr[index] = arr[high];
+                index = high;
+            }
+            // 当队首元素小于等于tmp时,向前挪动low指针
+            while (low < index && arr[low] <= tmp) {
+                low++;
+            }
+            // 当队首元素大于tmp时,需要将其赋值给high
+            if (low < index) {
+                arr[index] = arr[low];
+                index = low;
+            }
+        }
+        // 跳出循环时low和high相等,此时的low或high就是tmp的正确索引位置
+        // 由原理部分可以很清楚的知道low位置的值并不是tmp,所以需要将tmp赋值给arr[low]
+        arr[index] = tmp;
+        return index; // 返回tmp的正确位置
+    }
+
     private static void quickSort(int[] arr, int low, int high) {
         if (low < high) {
             // 找寻基准数据的正确索引
-            int index = getIndex(arr, low, high);
+            int index = getIndex2(arr, low, high);
 
             // 进行迭代对index之前和之后的数组进行相同的操作使整个数组变成有序
             quickSort(arr, low, index - 1);
