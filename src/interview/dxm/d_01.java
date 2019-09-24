@@ -1,4 +1,4 @@
-package interview.futu;
+package interview.dxm;
 
 /**
  * 打印出 1000以内的质数个数
