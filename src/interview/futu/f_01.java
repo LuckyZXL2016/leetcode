@@ -12,14 +12,14 @@ public class f_01 {
         int[] nums2 = {33, 11, 88, 22, 33, 56, 16, 44, 99, 18, 66};
         quickSort(nums1, 0, nums1.length - 1);
         quickSort(nums2, 0, nums2.length - 1);
-        boolean flag = isSubset(nums2,nums1);
+        boolean flag = isSubset(nums2, nums1);
         System.out.println(flag);
     }
 
     private static boolean isSubset(int[] arr1,int[] arr2) {
-        int i=0,j=0;
+        int i = 0, j = 0;
         if (arr1.length < arr2.length) return false;
-        while (i<arr1.length && j<arr2.length) {
+        while (i < arr1.length && j < arr2.length) {
             if (arr1[i] < arr2[j]) {
                 i++;
             } else if (arr1[i] == arr2[j]) {
